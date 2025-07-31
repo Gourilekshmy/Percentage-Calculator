@@ -7,25 +7,86 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="head">
+      <br /><br />
+      <h1>% Percentage Calculator</h1>
+      <br /><br />
+    </div>
+    <h4>Welcome to Percentage Calculator</h4>
+    <p>
+      Percentage calculator is your free online tool for you to calculate
+      percentages.
+    </p>
     <div class="cal">
-      <br /><br /><br />
-      <h1>Percentage Calculator</h1>
-      <input
-        class="inp"
-        type="number"
-        id="number"
-        placeholder="Enter the number"
-      />
-      <input
-        class="inp"
-        type="number"
-        id="percent"
-        placeholder="Percentage"
-      /><br /><br />
-      <button onclick="percentCal()">submit</button><br /><br />
-      <label for="">Result : </label>
-      <input type="number" id="result" />
-      <br /><br /><br /><br /><br /><br />
+      <div id="calhead">
+        <br /><br />
+        <h2>Percentage Of a Number</h2>
+      </div>
+      <div class="body">
+        <div class="inp">
+          <label for="number" id="numlab">Number : </label>
+          <input type="number" id="number" placeholder="Enter the number" />
+          <br />
+        </div>
+        <div class="inp">
+          <label for="percentage">Percentage : </label>
+          <input
+            type="number"
+            id="percent"
+            placeholder="Percentage"
+          /><br /><br />
+        </div>
+        <button id="reset" onclick="resetCal()">reset</button>
+        <button id="button" onclick="percentCal()">calculate</button
+        ><br /><br />
+        <label for="" id="resultlab">Result : </label>
+        <input type="number" id="result" placeholder="0" />
+        <br /><br /><br /><br />
+      </div>
+    </div>
+    <div class="cal2">
+      <div>
+        <br /><br />
+        <h2>What is the percentage increase/decrease from</h2>
+      </div>
+      <div class="body">
+        <div class="inp">
+          <label for="number1" id="numlab">Number1 : </label>
+          <input type="number" id="number1" placeholder="Enter value 1" />
+          <br />
+        </div>
+        <div class="inp">
+          <label id="num2Lab" for="number2">Number2 : </label>
+          <input
+            type="number"
+            id="number2"
+            placeholder="Enter value 2"
+          /><br /><br />
+        </div>
+        <button id="reset" onclick="reset()">reset</button>
+        <button id="button" onclick="increasePercent()">calculate</button
+        ><br /><br />
+        <label for="" id="resultlab">Result : </label>
+        <input type="text" id="result2" placeholder="0" />
+        <br /><br /><br /><br />
+      </div>
+    </div>
+    <div class="head">
+      <br>
+      <h5>What is a Percentage?</h5>
+      <p>
+        A percentage is a way to express a number as a fraction of 100, denoted
+        by the symbol "%". It represents a part of a whole, making it easier to
+        compare proportions. For example, 50% means 50 out of 100.
+      </p>
+      <h5>How Do You Calculate a Percentage? </h5>
+      <p>
+      To calculate a percentage, you
+      typically divide the part (the smaller value) by the whole (the larger
+      value), and then multiply the result by 100. This gives you the percentage
+      value as a number between 0 and 100.
+      </p>
+      <br><br><br>
     </div>
   </body>
   <script>
@@ -34,6 +95,32 @@
       percentNum = document.getElementById("percent").value;
       percentage = Number(firstNum * (percentNum / 100));
       document.getElementById("result").value = percentage;
+    }
+
+    function resetCal() {
+      firstNum = document.getElementById("number").value = "";
+      percentNum = document.getElementById("percent").value = "";
+      document.getElementById("result").value = "";
+    }
+
+    function increasePercent() {
+      x = Number(document.getElementById("number1").value);
+      y = Number(document.getElementById("number2").value);
+      firstSub = y - x;
+      ans = `${(firstSub / x) * 100}%`;
+      if (y < x) {
+        document.getElementById("result2").value = `${ans} (Decreased)`;
+      } else if (y > x) {
+        document.getElementById("result2").value = `${ans} (Increased)`;
+      } else {
+        document.getElementById("result2").value = `${ans} (No Change)`;
+      }
+    }
+
+    function reset() {
+      x = document.getElementById("number1").value = "";
+      y = document.getElementById("number2").value = "";
+      document.getElementById("result2").value = "";
     }
   </script>
 </html>
